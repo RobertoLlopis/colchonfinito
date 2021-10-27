@@ -1,48 +1,60 @@
 import { gql } from "graphql-request";
 
-export const fullPostQuery = gql`{
-query{
+export const fullPostQuery = gql`
+  {
+    query {
+      posts {
+        id
+        title
+        author {
+          name
+        }
+        postParagraphs {
+          paragraphText {
+            html
+          }
+          indexInPost
+        }
+        postPictures {
+          picture {
+            url
+          }
+          indexInPost
+          pictureDescription
+        }
+      }
+    }
+  }
+`;
+
+export const postsSummary = gql`
+  query {
     posts {
-      id
       title
       author {
         name
-      }
-      postParagraphs {
-        paragraphText {
-          html
-        }
-        indexInPost
-      }
-      postPictures {
         picture {
           url
         }
-        indexInPost
-        pictureDescription
       }
+      excerpt
+      date
+      tags
+      coverImage {
+        url
+      }
+      slug
     }
   }
-}
-  `
+`;
 
-export const postsSummary = gql`
-query {
-  posts {
-    title
-    author{
-      name
-      picture{
+export const pageInfo = (title: string) => gql`
+  query {
+    page(where: { title: \"${title}\" }){
+      id
+      headerPicture{
         url
       }
     }
-    excerpt
-    date
-    tags
-    coverImage {
-      url
-    }
-    slug
   }
-}
-`
+`;
