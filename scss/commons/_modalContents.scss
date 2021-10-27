@@ -1,0 +1,44 @@
+@use '../abstracts' as *;
+
+.modal-content {
+  background-color: $white;
+  padding: 2.2rem;
+
+  .modal-main {
+    &.horizontal {
+      @include flex($justify: space-between, $align: stretch);
+
+      .zone {
+        width: 47%;
+      }
+    }
+  }
+
+  .modal-buttons {
+    &.horizontal {
+      @include flex($justify: space-between);
+
+      button {
+        flex-basis: 47%;
+      }
+    }
+    &.center {
+      @include flex($justify: center);
+    }
+  }
+
+  .zone {
+    .zone-title {
+      font-size: 1.3rem;
+      @include font-style($weight: bold);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+    &.horizontal {
+      @include flex($justify: space-between, $align: stretch);
+    }
+    &.vertical {
+      @include flex($direction: column, $align: stretch);
+    }
+  }
+}

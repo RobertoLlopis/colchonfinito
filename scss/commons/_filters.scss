@@ -1,0 +1,123 @@
+@use '../abstracts' as *;
+
+.current-filters {
+  @include flex($justify: space-between);
+  margin-bottom: 9px;
+  // background-color: $background-light;
+
+  button {
+    min-width: 16rem;
+  }
+
+  .filter-buttons {
+    @include flex($justify: space-between);
+  }
+
+  .reset {
+    margin-right: 35px;
+    img {
+      vertical-align: middle;
+    }
+    a {
+      cursor: pointer;
+      font-weight: 600;
+      color: #0e4f9a;
+    }
+  }
+
+  &-state {
+    @include flex($direction: column, $align: flex-start);
+
+    &-label {
+      @include font-style($weight: 600);
+      color: $corp-gray-dark;
+      font-size: 1.5rem;
+    }
+    &-value {
+      @include font-style($weight: bold);
+      color: $black;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.filters {
+  @include flex($justify: flex-start);
+  @include opacity(0);
+  @include transition(all 0.5s);
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: $background-med;
+  padding: 2rem 3rem 3rem 3rem;
+
+  .filter-buttons {
+    margin-left: 0;
+    button {
+      height: 40px;
+      margin-left: 24px;
+      width: 120px;
+    }
+  }
+
+  .DateRangePickerInput_clearDates_default {
+    &:hover {
+      background: none;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      background: none;
+    }
+  }
+
+  &.open {
+    @include opacity(1);
+    top: 0;
+  }
+  &-left {
+    @include flex($justify: flex-start, $align: flex-end, $wrap: wrap);
+    & > div {
+      margin-left: 24px;
+      margin-top: 16px;
+    }
+  }
+
+  &-row {
+    @include flex($wrap: wrap, $align: flex-end);
+    & > div {
+      margin-left: 24px;
+      margin-top: 16px;
+    }
+  }
+
+  .filter-title {
+    @include font-style($weight: bold);
+    font-size: 11px;
+    text-align: left;
+    text-transform: uppercase;
+    color: $black;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .filter-form {
+    &-range-picker {
+      background-color: #fff;
+      color: #0e4f9a;
+      & > div {
+        height: 40px;
+      }
+    }
+    & > div {
+      height: 40px;
+      width: 128px;
+      background-color: $white;
+      &:hover {
+        background-color: $white;
+      }
+    }
+  }
+}

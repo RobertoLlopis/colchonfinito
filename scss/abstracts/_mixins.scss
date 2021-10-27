@@ -1,0 +1,225 @@
+@mixin flex($justify: flex-start, $align: center, $direction: row, $wrap: wrap) {
+  @include display-flex();
+  @include flex-direction($direction);
+  @include justify-content($justify);
+  @include align-items($align);
+  @include flex-wrap($wrap);
+}
+
+@mixin display-flex() {
+  display: -webkit-flex;
+  display: -webkit-flexbox;
+  display: -moz-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin order($order) {
+  -webkit-box-ordinal-group: $order;
+  -moz-box-ordinal-group: $order;
+  -ms-flex-order: $order;
+  -webkit-order: $order;
+  order: $order;
+}
+
+@mixin flex-basis($width) {
+  -webkit-flex-basis: $width;
+  -moz-flex-basis: $width;
+  -ms-flex-basis: $width;
+  flex-basis: $width;
+}
+
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
+}
+
+@mixin padding($rems) {
+  padding: $rems;
+}
+
+@mixin margin($rems) {
+  margin: $rems;
+}
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+//Border Radius
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box; // stops bg color from leaking outside the border:
+}
+
+// Single side border-radius
+
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin border($px: 1px, $style: solid, $color, $pxRadius: 0) {
+  border: $px $style $color;
+  @if $pxRadius {
+    @include border-radius($pxRadius);
+  }
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin text-shadow($shadow...) {
+  -webkit-text-shadow: $shadow;
+  -moz-text-shadow: $shadow;
+  text-shadow: $shadow;
+}
+
+@mixin font-style($weight: normal, $height: normal, $style: normal, $stretch: normal, $spacing: normal) {
+  font-weight: $weight;
+  line-height: $height;
+  font-style: $style;
+  font-stretch: $stretch;
+  letter-spacing: $spacing;
+}
+
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin transition($time...) {
+  -webkit-transition: $time;
+  -moz-transition: $time;
+  -ms-transition: $time;
+  -o-transition: $time;
+  transition: $time;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}
+
+@mixin opacity($opacity) {
+  $IEValue: $opacity * 100;
+  -webkit-opacity: $opacity;
+  -moz-opacity: $opacity;
+  -ms-opacity: $opacity;
+  opacity: $opacity;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + $IEValue + ')';
+  filter: alpha(opacity=$IEValue);
+}
+
+@mixin animate($name, $duration: 1s, $iteration: infinite, $delay: 0) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-iteration-count: $iteration;
+  animation-delay: $delay;
+}
