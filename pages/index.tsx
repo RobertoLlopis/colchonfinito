@@ -1,14 +1,15 @@
-import Head from "next/head";
 import Image from "next/image";
 import graphQlApiFetcher from "./api/graphQlApiFetcher";
 import { pageInfo, postsSummary } from "../graphql/queries";
 
 import type { NextPage } from "next";
+import Head from "components/Head";
 interface Props {
   posts: [Post];
   page: Page;
 }
 
+// TODO Implement react-query or swr
 export async function getStaticProps() {
   const posts = await graphQlApiFetcher({
     entity: "post",
@@ -30,12 +31,8 @@ export async function getStaticProps() {
 const Home: NextPage<Props> = ({ posts, page }) => {
   return (
     <div>
-      <Head>
-        <title>Colchonfinito</title>
-        <meta name="description" content="Travel blog app" />
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-
+     <Head />
+      
       <main>
         <Image
           src={page.headerPicture.url}
