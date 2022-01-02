@@ -1,9 +1,10 @@
-import Image from "next/image";
 import graphQlApiFetcher from "./api/graphQlApiFetcher";
 import { pageInfo, postsSummary } from "../graphql/queries";
 
 import type { NextPage } from "next";
-import Head from "components/Head";
+import HeaderImage from "components/Home/HeaderImage";
+import Divider from "components/Divider";
+import Layout from "components/Layout";
 interface Props {
   posts: [Post];
   page: Page;
@@ -30,20 +31,13 @@ export async function getStaticProps() {
 
 const Home: NextPage<Props> = ({ posts, page }) => {
   return (
-    <div>
-     <Head />
-      
+    <Layout> 
       <main>
-        <Image
-          src={page.headerPicture.url}
-          alt="Main Page cover picture"
-          layout="fill"
-        />
+        <HeaderImage urlImage={page.headerPicture.url}/>
+        <Divider align="center" iconName="book"/>
         {JSON.stringify(posts, null, 2)}
       </main>
-
-      <footer>Footer</footer>
-    </div>
+    </Layout>
   );
 };
 
