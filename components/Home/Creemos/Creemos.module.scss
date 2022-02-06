@@ -1,0 +1,44 @@
+.Creemos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h1{
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+}
+.statementGrid{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 2rem 4rem;
+  flex-wrap: wrap;
+}
+
+.statementCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 400px;
+  height: 200px;
+  i{
+    font-size: 3rem;
+    color: rgb(255, 208, 56);
+    height: 40%;
+    margin-bottom: 1rem;
+  }
+  h2{
+    margin: 0 auto 0.7rem;
+  }
+  p {
+    text-align: center;
+    height: 30%;
+    margin: 0;
+  }
+}

@@ -5,12 +5,14 @@ import type { NextPage } from "next";
 import HeaderImage from "components/Home/HeaderImage";
 import Divider from "components/Divider";
 import Layout from "components/Layout";
+import Creemos from "components/Home/Creemos/Creemos";
+
 interface Props {
   posts: [Post];
   page: Page;
 }
 
-// TODO Implement react-query or swr
+// TODO Implement react-query or swr ???? O no...
 export async function getStaticProps() {
   const posts = await graphQlApiFetcher({
     entity: "post",
@@ -35,6 +37,7 @@ const Home: NextPage<Props> = ({ posts, page }) => {
       <main>
         <HeaderImage urlImage={page.headerPicture.url}/>
         <Divider align="center" iconName="book"/>
+        <Creemos />
         {JSON.stringify(posts, null, 2)}
       </main>
     </Layout>
