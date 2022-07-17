@@ -7,7 +7,6 @@ interface Post {
   tags: string[];
   excerpt: string;
   date;
-  tags: string[];
   coverImage: {
     url;
   };
@@ -18,4 +17,11 @@ interface Page {
   headerPicture: {
     url: string;
   };
+}
+
+interface Author {
+  name: string,
+  picture:{
+    url: string;
+  }
 }

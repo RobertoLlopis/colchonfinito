@@ -48,6 +48,18 @@ export const postsSummary = gql`
   }
 `;
 
+export const authorsQuery = gql`
+  {
+    authors {
+      name,
+      picture {
+        url
+      }
+    }
+  }
+`;
+
+
 export const pageInfo = (title: string) => gql`
   query {
     page(where: { title: \"${title}\" }){
