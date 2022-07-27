@@ -24,4 +24,5 @@ interface Author {
   picture:{
     url: string;
   }
+  email: string;
 }

@@ -54,7 +54,8 @@ export const authorsQuery = gql`
       name,
       picture {
         url
-      }
+      },
+      email,
     }
   }
 `;
