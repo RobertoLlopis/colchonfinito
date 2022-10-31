@@ -1,6 +1,7 @@
 import React, { ReactNode, useCallback } from "react";
+import { classNames } from "primereact/utils";
 
-interface Props {
+export interface IconProps {
   iconName: string;
   marginDir?: "l" | "r" | "t" | "b";
   marginValue?: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10";
@@ -10,14 +11,16 @@ interface Props {
   styles?: React.CSSProperties;
 }
 
-function Icon({ iconName, marginDir, marginValue, extraClassName, color, styles }: Props) {
-  const getMarginClassName = useCallback(
-    () => (marginDir ? `${marginDir}-${marginValue || "1"}` : ""),
-    [marginDir, marginValue]
-  );
+function Icon({ iconName, marginDir, marginValue, extraClassName, color, styles }: IconProps) {
   const getStyles = useCallback(() => (color ? { color, ...styles } : styles), [color, styles]);
-
-  const finalClassName = `pi pi-${iconName} ${getMarginClassName()} ${extraClassName || ""}`;
+  const finalClassName = classNames(
+    "pi",
+    { 
+      [`pi-${iconName}`]: iconName,
+      [`m${marginDir}-${marginValue || "1"}`]: marginDir,
+    },
+    extraClassName
+  );
   return <i className={finalClassName} style={getStyles()}></i>;
 }
 

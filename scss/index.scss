@@ -2,7 +2,7 @@
 
 
 body {
-  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue',
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI',  Ubuntu, 'Helvetica Neue',
     sans-serif;
   position: relative;
   padding: 0;
@@ -13,13 +13,13 @@ body {
 
 /* Place your global SCSS here */
 main {
-  // * Next line fixes IE not displayable <main> tag
-  display: block;
   overflow-y: auto;
 }
 
 section {
-  margin-bottom: 4rem;
+  &:not(:last-child){
+    margin-bottom: 4rem;
+  }
 }
 
 /* Make images easier to work with */
@@ -45,13 +45,14 @@ h1,
 h2,
 h3,
 h4,
-h4,
+h5,
 h6 {
   font-weight: normal;
 }
 
 a {
   color: $corp-blue;
+  cursor: pointer;
 }
 
 .p0 {

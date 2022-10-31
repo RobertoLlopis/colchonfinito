@@ -1,0 +1,85 @@
+@use '../../../scss/abstracts' as *;
+
+.footerSection{
+  background-color: #34343C;
+  font-weight: 500;
+  display: flex;
+  padding: 2rem 5.5rem;
+  color: white;
+  
+  h2{
+    font-weight: 600;
+  }
+
+  p{
+    font-size: 1.1rem;
+  }
+
+  > div:first-child{
+    width: 35%;
+  }
+
+  > div:nth-child(2){
+    width: 40%;
+  }
+
+  > div:last-child{
+    width: 25%;
+  }
+}
+
+.centerContainer{
+  padding-right: 1.5rem;
+}
+
+.socialRow, .emailRow{
+  @include flex($align: center);
+  width: 100%;
+}
+
+.socialRow{
+  > div:not(:last-child){
+    margin-right: 1rem;
+  }
+  padding-left: 6rem;
+}
+
+.emailRow{
+  a{
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 1.5rem;
+  }
+  .footerIconWrapper{
+    margin-top: 0.4rem;
+  }
+}
+
+.footerIconWrapper{
+  a{
+    @include border-radius(50%);
+    position: relative;
+    display: inline-block;
+    height: 2.4rem;
+    width: 2.4rem;
+    background-color: $corp-orange;
+    color: white
+  }
+  i{
+    @include absCenter();
+  }
+}
+
+.quoteWrapper{
+  border-left: 4px solid white;
+  height: auto;
+  margin-top: 1.5rem;
+  padding: 0 1.5rem;
+  font-size: 1.4rem;
+
+  h4:last-child{
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+}

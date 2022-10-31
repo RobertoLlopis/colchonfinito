@@ -8,6 +8,7 @@ import Layout from "components/Layout";
 import Creemos from "components/Home/Creemos/Creemos";
 import TeUnes from "components/Home/TeUnes/TeUnes";
 import Quien from "components/Home/Quien/Quien";
+import Footer from "components/Home/Footer";
 
 interface Props {
   posts: [Post];
@@ -51,7 +52,9 @@ const Home: NextPage<Props> = ({ posts, page, authors }) => {
         <TeUnes />
         <Divider iconName="users"/>
         <Quien authors={authors} />
+        
         {JSON.stringify(posts, null, 2)}
+        <Footer />
       </main>
     </Layout>
   );

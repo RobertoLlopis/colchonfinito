@@ -13,7 +13,6 @@ const Layout: NextPage<Props> = ({children}) =>{
             <Head />
             <Header />
             {children}
-            <footer>Footer</footer>
         </div>
     )
 }
