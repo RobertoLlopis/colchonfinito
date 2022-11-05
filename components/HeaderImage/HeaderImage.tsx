@@ -6,14 +6,16 @@ import s from './HeaderImage.module.scss';
 
 interface Props {
     urlImage: string;
+    alt: string;
+    wrapperHeight?: string | number;
   }
 
-const HeaderImage: NextPage<Props> = ({urlImage}) =>{
+const HeaderImage: NextPage<Props> = ({urlImage, alt, wrapperHeight}) =>{
     return (
-        <section className={s.HeaderImage}>
+        <section className={s.HeaderImage} style={{height: wrapperHeight || '80vh'}}>
           <Image
             src={urlImage}
-            alt="Main Page cover picture"
+            alt={alt}
             layout="fill"
             quality={100}
           />

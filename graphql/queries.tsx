@@ -60,13 +60,46 @@ export const authorsQuery = gql`
   }
 `;
 
-
 export const pageInfo = (title: string) => gql`
   query {
     page(where: { title: \"${title}\" }){
       id
       headerPicture{
         url
+      }
+    }
+  }
+`;
+
+export const fullSinglePost = (idPost: string) => gql`
+  query {
+    post(where: { id: \"${idPost}\" }) {
+      title
+      tags
+      updatedAt
+      date
+      slug
+      coverImage {
+        url
+      }
+      author {
+        name
+        picture {
+          url
+        }
+        email
+      }
+      postParagraphs {
+        indexInPost
+        paragraphText {
+          html
+        }
+      }
+      postPictures {
+        indexInPost
+        picture {
+          url
+        }
       }
     }
   }

@@ -18,8 +18,14 @@ main {
 
 section {
   &:not(:last-child){
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
+}
+
+article{
+  padding: 0 3rem;
+  max-width: calc(1140px - 6rem);
+  margin: auto;
 }
 
 /* Make images easier to work with */

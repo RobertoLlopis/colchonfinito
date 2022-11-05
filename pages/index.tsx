@@ -2,16 +2,17 @@ import graphQlApiFetcher from "./api/graphQlApiFetcher";
 import { authorsQuery, pageInfo, postsSummary } from "../graphql/queries";
 
 import type { NextPage } from "next";
-import HeaderImage from "components/Home/HeaderImage";
+import HeaderImage from "components/HeaderImage";
 import Divider from "components/Divider";
 import Layout from "components/Layout";
 import Creemos from "components/Home/Creemos/Creemos";
 import TeUnes from "components/Home/TeUnes/TeUnes";
 import Quien from "components/Home/Quien/Quien";
 import Footer from "components/Home/Footer";
+import Link from "next/link";
 
 interface Props {
-  posts: [Post];
+  posts: [PostSummary];
   page: Page;
   authors: [Author];
 }
@@ -45,14 +46,14 @@ const Home: NextPage<Props> = ({ posts, page, authors }) => {
   return (
     <Layout> 
       <main>
-        <HeaderImage urlImage={page.headerPicture.url}/>
+        <HeaderImage urlImage={page.headerPicture.url} alt="Main Page cover picture" wrapperHeight="100vh"/>
         <Divider iconName="book"/>
         <Creemos />
         <Divider iconName="clock"/>
         <TeUnes />
         <Divider iconName="users"/>
         <Quien authors={authors} />
-        
+        <Link href="/posts/ckv3szk088dzl0c50kr2cum59">A post</Link>
         {JSON.stringify(posts, null, 2)}
         <Footer />
       </main>

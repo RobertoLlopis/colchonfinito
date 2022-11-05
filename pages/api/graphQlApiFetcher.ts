@@ -15,14 +15,10 @@ async function graphQlApiFetcher({
   if (!graphCmsLink) return null;
 
   const graphcms = new GraphQLClient(graphCmsLink);
-
-  try {
-    const data = await graphcms.request(query);
-    console.log(data);
-    return data[plural ? entity.concat("s") : entity];
-  } catch (error) {
-    return "error";
-  }
+  const data = await graphcms.request(query);
+  console.log(data);
+  console.log('data?.post?.title', data?.post?.title);
+  return data[plural ? entity.concat("s") : entity];
 }
 
 export default graphQlApiFetcher;
