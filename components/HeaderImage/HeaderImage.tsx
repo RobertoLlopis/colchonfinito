@@ -18,6 +18,7 @@ const HeaderImage: NextPage<Props> = ({urlImage, alt, wrapperHeight}) =>{
             alt={alt}
             layout="fill"
             quality={100}
+            priority
           />
         </section>
     )

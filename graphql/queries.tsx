@@ -30,6 +30,7 @@ export const fullPostQuery = gql`
 export const postsSummary = gql`
   query {
     posts {
+      id
       title
       author {
         name
@@ -99,7 +100,8 @@ export const fullSinglePost = (idPost: string) => gql`
         indexInPost
         picture {
           url
-        }
+        },
+        pictureDescription
       }
     }
   }

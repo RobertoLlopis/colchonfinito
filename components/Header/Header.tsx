@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import Image from 'next/image';
 import { Menubar } from 'primereact/menubar';
 import { HeaderStructure } from './HeaderStructure';
-import Logo from 'public/favicon.png';
 
 import s from './Header.module.scss';
+import Logo from 'components/Logo';
 
 function Header() {
     const [isOnTop, setIsOnTop] = useState(false);
@@ -20,10 +19,8 @@ function Header() {
         // return window.removeEventListener('scroll', handleScroll);
     }, []);
 
-
-    const logo = useMemo(() => <Image src={Logo} alt="colchonfinito logo" layout='intrinsic' height='50px' width='50px'/>, []);
     return (
-        <Menubar start={logo} model={HeaderStructure} className={`${s.Header} ${isOnTop ? s.onTop  : ''} ${isSticky ? s.sticky  : ''}`}/>
+        <Menubar start={Logo} model={HeaderStructure} className={`${s.Header} ${isOnTop ? s.onTop  : ''} ${isSticky ? s.sticky  : ''}`}/>
     )
 }
 

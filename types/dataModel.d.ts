@@ -1,6 +1,8 @@
+type Url = string
+
 interface Page {
   headerPicture: {
-    url: string,
+    url: Url,
   };
 }
 
@@ -12,11 +14,13 @@ interface Author {
 
 type Tags = string[]
 
+
 type Picture = {
-  url: string,
+  url: Url,
 }
 
 interface PostSummary {
+  id: string,
   title: !string,
   tags: Tags,
   excerpt: string,
@@ -27,20 +31,20 @@ interface PostSummary {
   slug: string,
 }
 
-type IndexInPost = number
-
+type IndexInPost = {
+  indexInPost: number,
+}
 type ParagraphText = {
   html: string
 }
 
-type PostParagraph = {
-  indexInPost: IndexInPost
+interface PostParagraph extends IndexInPost {
   paragraphText: ParagraphText,
 }
 
-type PostPicture = {
-  indexInPost: IndexInPost,
-  picture: Picture
+interface PostPicture extends IndexInPost {
+  picture: Picture,
+  pictureDescription: string
 }
 
 interface FullPost extends PostSummary {

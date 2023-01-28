@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { Fragment, useEffect, useMemo } from "react";
 import { GetServerSidePropsContext } from "next";
 
 import graphQlApiFetcher from "pages/api/graphQlApiFetcher";
@@ -7,6 +7,9 @@ import { fullSinglePost } from "graphql/queries";
 import Layout from "components/Layout";
 import HeaderImage from "components/HeaderImage";
 import Title from "components/PostPieces/Title";
+import ArticleImage from "components/ArticleImage";
+import ArticleParagraph from "components/ArticleParagraph";
+import ArticleFooter from "components/ArticleFooter";
 
 const defaultProps = {
   props: {
@@ -33,12 +36,24 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 }
 
+const returnArticlePartComponent = (articlePart: PostParagraph | PostPicture) => {
+  if ("paragraphText" in articlePart) return <ArticleParagraph htmlString={articlePart.paragraphText.html}/>;
+  if ("picture" in articlePart) return <ArticleImage src={articlePart.picture.url} alt={articlePart.pictureDescription} />;
+  return null;
+};
 
 function Post({ post }: { post: FullPost }) {
   const postElements = useMemo(() => [...(post?.postParagraphs || []), ...(post?.postPictures || [])], [post]);
   const orderedElements = useMemo(
     () => postElements.sort((postEl, postEl2) => postEl.indexInPost - postEl2.indexInPost),
     [postElements]
+  );
+  const ArticleContentComponents = useMemo(
+    () =>
+      orderedElements.map((articlePart, idx) => (
+        <Fragment key={`${post.slug}-part-${idx}`}>{returnArticlePartComponent(articlePart)}</Fragment>
+      )),
+    [orderedElements]
   );
   useEffect(() => {
     console.log("orderedElements, post", orderedElements, post);
@@ -53,8 +68,10 @@ function Post({ post }: { post: FullPost }) {
         <HeaderImage urlImage={coverImage?.url} alt={`cover image of post: ${title}`} />
         <article>
           <Title title={title} />
+          {ArticleContentComponents}
         </article>
       </main>
+      <ArticleFooter />
     </Layout>
   );
 }

@@ -1,53 +1,18 @@
-import Icon, { IconProps } from "components/Icon/Icon";
 import React from "react";
+import { AvailableIcons } from "types/common";
+import { EMAIL, socialIcons } from "lib/constants";
+import { renderIconLink } from "helpers/socialIcons";
 import s from "./Footer.module.scss";
-import { EMAIL, FACEBOOK_URL, INSTAGRAM_URL, TWITTER_URL, YOUTUBE_URL } from "lib/constants";
 
-interface IconLinkProps extends IconProps {
-  email?: string;
-  socialLink?: string;
-}
-
-type AvailableIcons = "email" | "facebook" | "twitter" | "instagram" | "youtube";
-
-const IconLink = ({ email, socialLink, ...restProps }: IconLinkProps) => (
-  <a href={`${email ? `mailto:${email}` : socialLink}`}>
-    <Icon {...restProps} />
-  </a>
+const renderIconLinkWrapped = ({ iconName }: { iconName: AvailableIcons }) => (
+  <div className={s.footerIconWrapper}>{renderIconLink({ iconName })}</div>
 );
 
-const icons = {
-  email: {
-    email: EMAIL,
-    iconName: "envelope",
-  },
-  facebook: {
-    socialLink: FACEBOOK_URL,
-    iconName: "facebook",
-  },
-  instagram: {
-    socialLink: INSTAGRAM_URL,
-    iconName: "instagram",
-  },
-  youtube: {
-    socialLink: YOUTUBE_URL,
-    iconName: "youtube",
-  },
-  twitter: {
-    socialLink: TWITTER_URL,
-    iconName: "twitter",
-  },
-};
-
-const renderIconLink = (iconName: AvailableIcons) => (
-  <div className={s.footerIconWrapper}>
-    <IconLink {...{ ...icons[iconName], color: "white", styles:{fontSize: '1.2rem'} }} />
-  </div>
-);
-
-const aboutUsMunifest = 'Hace un par de años nos propusimos conocer Sudamérica, tomándonos el tiempo y el cuidado que esa palabra lleva implícita. Tras esperar a que llegara "el momento", decidimos dejar aparcados nuestros trabajos y nuestras vidas en la capital y cruzar el charco, para aprender del mundo, empaparnos de su gente, sus raíces y otras formas de vivir.';
-const quote = '“Viajar es un ejercicio con consecuencias fatales para los prejuicios, la intolerancia y la estrechez de mente”.';
-const quoteAuthor = 'Mark Twain.';
+const aboutUsMunifest =
+  'Hace un par de años nos propusimos conocer Sudamérica, tomándonos el tiempo y el cuidado que esa palabra lleva implícita. Tras esperar a que llegara "el momento", decidimos dejar aparcados nuestros trabajos y nuestras vidas en la capital y cruzar el charco, para aprender del mundo, empaparnos de su gente, sus raíces y otras formas de vivir.';
+const quote =
+  "“Viajar es un ejercicio con consecuencias fatales para los prejuicios, la intolerancia y la estrechez de mente”.";
+const quoteAuthor = "Mark Twain.";
 
 function Footer() {
   return (
@@ -56,15 +21,18 @@ function Footer() {
         <div>
           <h2>¡Síguenos la pista en redes sociales!</h2>
           <div className={s.socialRow}>
-            {renderIconLink("facebook")}
-            {renderIconLink("instagram")}
-            {renderIconLink("youtube")}
-            {renderIconLink("twitter")}
+            {renderIconLinkWrapped({ iconName: "facebook" })}
+            {renderIconLinkWrapped({ iconName: "instagram" })}
+            {renderIconLinkWrapped({ iconName: "youtube" })}
+            {renderIconLinkWrapped({ iconName: "twitter" })}
           </div>
         </div>
         <div>
           <h2>También puedes escribirnos a:</h2>
-          <div className={s.emailRow}><a href={`mailto:${EMAIL}`}>{EMAIL}</a>{renderIconLink("email")}</div>
+          <div className={s.emailRow}>
+            <a href={socialIcons.email.socialLink}>{EMAIL}</a>
+            {renderIconLink({iconName: "email"})}
+          </div>
         </div>
       </div>
       <div className={s.centerContainer}>

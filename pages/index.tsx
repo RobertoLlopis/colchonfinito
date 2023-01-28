@@ -43,6 +43,7 @@ export async function getStaticProps() {
 }
 
 const Home: NextPage<Props> = ({ posts, page, authors }) => {
+  console.log('posts :>> ', posts);
   return (
     <Layout> 
       <main>

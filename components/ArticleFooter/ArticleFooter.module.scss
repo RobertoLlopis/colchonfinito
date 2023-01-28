@@ -1,0 +1,51 @@
+@use "../../scss/abstracts/mixins" as *;  
+
+
+.ArticleFooter {
+  min-height: 10rem;
+  position: relative;
+  background-color: #484C55;
+  margin-top: 3rem;
+}
+
+.backgroundImage {
+  z-index: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-color: red;
+  opacity: 0.3;
+}
+
+.footerWrapper {
+  @include flex(center, flex-start);
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  color: white;
+  h3 {
+    margin-top: 0;
+  }
+  > div {
+    @include flex(center, center);
+    padding: 2rem 3rem;
+    min-height: 10rem;
+    &:first-child{
+      width: 20%;
+      justify-content: flex-end;
+    }
+    &:not(:first-child){
+      width: 40%;
+    }
+  }
+}
+
+.iconsBox {
+  width: 100%;
+  @include flex(center, flex-start);
+  > a {
+    display: block;
+    padding: 1rem;
+  }
+}

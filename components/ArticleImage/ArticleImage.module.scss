@@ -1,0 +1,32 @@
+@use "../../node_modules/include-media/dist/include-media" as *;  
+
+
+.ArticleImageContainer{
+  width: 100%;
+  // max-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ArticleImageBox{
+  position: relative;
+  width: 75%;
+  height: 75vh;
+  @include media("<desktop") {
+    height: 60vh;
+  }
+  @include media("<tablet") {
+    height: 30vh;
+  }
+}
+
+.ArticlePicDesc{
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  bottom: 0;
+  width: 100%;
+  color: #5e5c5c;
+}
