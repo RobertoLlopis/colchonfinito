@@ -2,6 +2,8 @@
 
 .LastPostsArticleCards {
   @include flex(center, flex-start);
+  gap: 1rem;
+  padding: 0 1rem;
   margin-top: 2rem;
   row-gap: 2rem;
 }
@@ -9,4 +11,7 @@
 .buttonContainer {
   @include flex(center, center);
   width: 100%;
+  button {
+    color: white;
+  }
 }

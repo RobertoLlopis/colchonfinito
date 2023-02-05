@@ -18,7 +18,7 @@ function LastPostsArticleCards({ posts }: { posts: PostSummary[] }) {
       ))}
       <div className={s.buttonContainer}>
         <Link href={`/posts`} passHref>
-          <Button label="Todos los artículos"/>
+          <Button label="Todos los artículos" className="p-button-raised"/>
         </Link>
       </div>
     </section>

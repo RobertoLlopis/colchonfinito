@@ -55,8 +55,6 @@ const Home: NextPage<Props> = ({ posts, page, authors }) => {
         <TeUnes />
         <Divider iconName="users" />
         <Quien authors={authors} />
-        <Link href="/posts/ckv3szk088dzl0c50kr2cum59">A post</Link>
-        {JSON.stringify(posts, null, 2)}
         <Footer />
       </main>
     </Layout>

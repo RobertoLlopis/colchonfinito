@@ -24,7 +24,7 @@ function Quien({ authors }: QuienProps) {
           return <MemberCard key={index} name={name} pictureUrl={url} email={email}/>;
         })}
       </div>
-      <div className={s.QuienButtonWrapper}><Button label="¡Conócenos más!" className="p-button-rounded"/></div>
+      <div className={s.QuienButtonWrapper}><Button label="¡Conócenos más!" className="p-button-rounded p-button-raised"/></div>
     </section>
   );
 }
