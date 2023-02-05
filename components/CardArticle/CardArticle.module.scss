@@ -1,0 +1,13 @@
+.CardArticle {
+  max-width: calc(33.3% - 2rem);
+
+  .p-card-header {
+    height: 13rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+}

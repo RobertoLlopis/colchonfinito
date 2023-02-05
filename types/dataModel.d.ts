@@ -1,55 +1,52 @@
-type Url = string
+type Url = string;
 
 interface Page {
   headerPicture: {
-    url: Url,
+    url: Url;
   };
 }
 
 interface Author {
-  name: string,
-  picture: Picture,
-  email: string,
+  name: string;
+  picture: Picture;
+  email: string;
 }
 
-type Tags = string[]
-
+type Tags = string[];
 
 type Picture = {
-  url: Url,
-}
+  url: Url;
+};
 
 interface PostSummary {
-  id: string,
-  title: !string,
-  tags: Tags,
-  excerpt: string,
-  updatedAt: Date,
-  date: Date,
-  coverImage: Picture,
-  author: Author,
-  slug: string,
+  id: string;
+  title: !string;
+  tags: Tags;
+  excerpt: string;
+  updatedAt: string;
+  date: string;
+  coverImage: Picture;
+  author: Author;
+  slug: string;
 }
 
 type IndexInPost = {
-  indexInPost: number,
-}
+  indexInPost: number;
+};
 type ParagraphText = {
-  html: string
-}
+  html: string;
+};
 
 interface PostParagraph extends IndexInPost {
-  paragraphText: ParagraphText,
+  paragraphText: ParagraphText;
 }
 
 interface PostPicture extends IndexInPost {
-  picture: Picture,
-  pictureDescription: string
+  picture: Picture;
+  pictureDescription: string;
 }
 
 interface FullPost extends PostSummary {
-  postParagraphs: PostParagraph[],
-  postPictures: PostPicture[],
+  postParagraphs: PostParagraph[];
+  postPictures: PostPicture[];
 }
-
-

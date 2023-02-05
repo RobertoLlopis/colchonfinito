@@ -8,8 +8,9 @@ import { renderIconLink } from "helpers/socialIcons";
 import s from "./ArticleFooter.module.scss";
 import Image from "next/image";
 
-const ArticleFooter = () => {
+const ArticleFooter = ({ noHotLink }: { noHotLink?: boolean }) => {
   const [facebookUrl, twitterUrl] = useShareUrls();
+  const displayHotLink = !noHotLink;
   return (
     <footer className={s.ArticleFooter}>
       <Image
@@ -23,13 +24,15 @@ const ArticleFooter = () => {
         <div>
           <Logo />
         </div>
-        <div>
-          <h3>¿Te ha gustado este post? ¡Compártelo!</h3>
-          <div className={s.iconsBox}>
-            {renderIconLink({ iconName: "facebook", size: "9", hotLink: facebookUrl })}
-            {renderIconLink({ iconName: "twitter", size: "9", hotLink: twitterUrl })}
+        {displayHotLink && (
+          <div>
+            <h3>¿Te ha gustado este post? ¡Compártelo!</h3>
+            <div className={s.iconsBox}>
+              {renderIconLink({ iconName: "facebook", size: "9", hotLink: facebookUrl })}
+              {renderIconLink({ iconName: "twitter", size: "9", hotLink: twitterUrl })}
+            </div>
           </div>
-        </div>
+        )}
         <div>
           <h3>¡No nos pierdas la pista que no paramos!</h3>
           <div className={s.iconsBox}>

@@ -1,0 +1,18 @@
+@use "../../scss/abstracts/mixins" as *;
+
+.Posts {
+  padding-top: 5rem;
+
+  h1,
+  h4 {
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+.postsContainer {
+  @include flex(center, flex-start);
+  margin-top: 2rem;
+  row-gap: 2rem;
+  padding-bottom: 1rem;
+}

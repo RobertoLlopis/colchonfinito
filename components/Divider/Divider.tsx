@@ -17,7 +17,7 @@ const Divider = ({ align, iconName }: Props) => {
                 iconName &&
                 <Icon
                     iconName={iconName}
-                    marginDir="r"
+                    marginDir="both"
                     marginValue="2"
                 />
             }

@@ -2,7 +2,7 @@
 
 
 body {
-  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI',  Ubuntu, 'Helvetica Neue',
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', Ubuntu, 'Helvetica Neue',
     sans-serif;
   position: relative;
   padding: 0;
@@ -17,12 +17,12 @@ main {
 }
 
 section {
-  &:not(:last-child){
+  &:not(:last-child) {
     margin-bottom: 3rem;
   }
 }
 
-article{
+article {
   padding: 0 3rem;
   max-width: calc(1140px - 6rem);
   margin: auto;
@@ -84,12 +84,15 @@ a {
 .p5 {
   @include padding(5rem);
 }
+
 .pb-3 {
   padding-bottom: 3rem;
 }
+
 .pb-4 {
   padding-bottom: 4rem;
 }
+
 .pb-5 {
   padding-bottom: 5rem;
 }
@@ -97,15 +100,19 @@ a {
 .pl-1 {
   padding-left: 1rem;
 }
+
 .pl-2 {
   padding-left: 2rem;
 }
+
 .pl-3 {
   padding-left: 3rem;
 }
+
 .pl-4 {
   padding-left: 4rem;
 }
+
 .pl-5 {
   padding-left: 5rem;
 }
@@ -113,18 +120,23 @@ a {
 .m-0 {
   @include margin(0);
 }
+
 .mt-1 {
   @include margin(1rem 0 0 0);
 }
+
 .mt-2 {
   @include margin(2rem 0 0 0);
 }
+
 .mt-3 {
   @include margin(3rem 0 0 0);
 }
+
 .mt-4 {
   @include margin(4rem 0 0 0);
 }
+
 .mt-5 {
   @include margin(5rem 0 0 0);
 }
@@ -132,15 +144,19 @@ a {
 .mb-1 {
   @include margin(0 0 1rem 0);
 }
+
 .mb-2 {
   @include margin(0 0 2rem 0);
 }
+
 .mb-3 {
   @include margin(0 0 3rem 0);
 }
+
 .mb-4 {
   @include margin(0 0 4rem 0);
 }
+
 .mb-5 {
   @include margin(0 0 5rem 0);
 }
@@ -148,15 +164,19 @@ a {
 .mr-1 {
   @include margin(0 1rem 0 0);
 }
+
 .mr-2 {
   @include margin(0 2rem 0 0);
 }
+
 .mr-3 {
   @include margin(0 3rem 0 0);
 }
+
 .mr-4 {
   @include margin(0 4rem 0 0);
 }
+
 .mr-5 {
   @include margin(0 5rem 0 0);
 }
@@ -164,17 +184,41 @@ a {
 .ml-1 {
   @include margin(0 0 0 1rem);
 }
+
 .ml-2 {
   @include margin(0 0 0 2rem);
 }
+
 .ml-3 {
   @include margin(0 0 0 3rem);
 }
+
 .ml-4 {
   @include margin(0 0 0 4rem);
 }
+
 .ml-5 {
   @include margin(0 0 0 5rem);
+}
+
+.mrl-1 {
+  @include margin(0 1rem 0 1rem);
+}
+
+.mrl-2 {
+  @include margin(0 2rem 0 2rem);
+}
+
+.mrl-3 {
+  @include margin(0 3rem 0 3rem);
+}
+
+.mrl-4 {
+  @include margin(0 4rem 0 4rem);
+}
+
+.mrl-5 {
+  @include margin(0 5rem 0 5rem);
 }
 
 .w-100 {
@@ -227,7 +271,8 @@ a {
   @include flex(flex-start, center);
   margin-top: -1.2rem;
   margin-bottom: 1.8rem;
-  > * {
+
+  >* {
     margin-right: 1.2rem;
   }
 }
@@ -244,15 +289,19 @@ a {
   @include flex(space-around, center);
 
   width: 32%;
+
   .button {
     width: 45%;
   }
+
   &.extra-buttons {
     @include flex(flex-end, center);
     width: 80%;
     max-width: none;
+
     .button {
       width: 18%;
+
       &:not(:last-child) {
         margin-right: 1.5rem;
       }
@@ -263,36 +312,46 @@ a {
 .listado-filters-form {
   @include flex(flex-start, center);
   margin-top: 3rem;
-  > div {
+
+  >div {
     width: calc(15% - 3rem);
     min-width: 185px;
     margin-right: 3rem;
+
     &:last-child {
       margin-right: 0;
     }
+
     &.width-10 {
       width: calc(10% - 3rem);
     }
+
     &.width-20 {
       width: calc(20% - 3rem);
     }
+
     &.width-55 {
       width: calc(55% - 3rem);
     }
+
     &.second-row-margin {
       margin-top: 4rem;
     }
   }
+
   .corp-color {
     padding-top: 2rem;
     font-size: $fs-13;
-    > div {
+
+    >div {
       background-color: $corp-blue;
     }
-    > span {
+
+    >span {
       color: $corp-blue;
     }
   }
+
   .custom-margin-reset {
     padding-top: 6rem;
   }
@@ -301,13 +360,16 @@ a {
 .headerWrapper {
   @include flex(space-between, center);
   padding: 0 1rem;
+
   h4 {
     font-size: $fs-16;
     color: $status-black;
   }
+
   &:not(:first-child) {
     margin-top: 4rem;
   }
+
   &.innerHeader {
     @include flex(flex-start, center);
   }
@@ -320,16 +382,43 @@ a {
   margin-left: 1rem;
   font-size: 13px;
   color: $white;
+
   &.blue {
     background-color: $status-blue;
   }
+
   &.orange {
     background-color: $status-warn;
   }
+
   &.red {
     background-color: $status-red;
   }
+
   &.green {
     background-color: $status-green-light;
+  }
+}
+
+// =================== OVERWRITE PRIME STYLES ==================
+.p-card .p-card-title {
+  font-weight: 400;
+}
+
+.p-card-header {
+  position: relative;
+  height: 13rem;
+  width: 100%;
+}
+
+.p-card .p-card-content {
+  padding-bottom: 0;
+}
+
+.p-card-footer {
+  font-weight: 200;
+
+  a {
+    border-bottom: 1px solid #5e5c5c;
   }
 }
