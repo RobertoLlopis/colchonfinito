@@ -4,6 +4,8 @@ export const INSTAGRAM_URL = 'https://www.instagram.com/colchonfinito/';
 export const YOUTUBE_URL = 'https://www.youtube.com/channel/UCJm4L67j_xhbDqpzEYBlMRQ';
 export const TWITTER_URL = 'https://twitter.com/ColchonFinito';
 
+export const placeholderImgUrl = 'https://media.graphassets.com/5TS3tIQS2610Er12XhbA';
+
 export const socialIcons = {
   email: {
     socialLink: `mailto:${EMAIL}`,

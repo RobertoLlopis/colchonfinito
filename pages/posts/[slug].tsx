@@ -10,6 +10,7 @@ import Title from "components/PostPieces/Title";
 import ArticleImage from "components/ArticleImage";
 import ArticleParagraph from "components/ArticleParagraph";
 import ArticleFooter from "components/ArticleFooter";
+import { placeholderImgUrl } from "lib/constants";
 
 const defaultProps = {
   props: {
@@ -18,17 +19,18 @@ const defaultProps = {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { id: idPost } = context.query;
-  if (!idPost) return defaultProps;
+  const { slug: postSlug } = context.query;
+  if (!postSlug) return defaultProps;
   try {
     const post = await graphQlApiFetcher({
       entity: "post",
-      query: fullSinglePost(idPost as string),
+      query: fullSinglePost(postSlug as string),
       plural: false,
     });
     return {
       props: {
         post,
+        placeholderImgSrc: '',
       },
     };
   } catch (error) {
@@ -37,12 +39,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 }
 
 const returnArticlePartComponent = (articlePart: PostParagraph | PostPicture) => {
-  if ("paragraphText" in articlePart) return <ArticleParagraph htmlString={articlePart.paragraphText.html}/>;
-  if ("picture" in articlePart) return <ArticleImage src={articlePart.picture.url} alt={articlePart.pictureDescription} />;
+  if ("paragraphText" in articlePart) return <ArticleParagraph htmlString={articlePart.paragraphText.html} />;
+  if ("picture" in articlePart)
+    return <ArticleImage src={articlePart.picture?.url || placeholderImgUrl} alt={articlePart.pictureDescription} />;
   return null;
 };
 
-function Post({ post }: { post: FullPost }) {
+function Post({ post }: { post: FullPost; }) {
   const postElements = useMemo(() => [...(post?.postParagraphs || []), ...(post?.postPictures || [])], [post]);
   const orderedElements = useMemo(
     () => postElements.sort((postEl, postEl2) => postEl.indexInPost - postEl2.indexInPost),
@@ -51,7 +54,9 @@ function Post({ post }: { post: FullPost }) {
   const ArticleContentComponents = useMemo(
     () =>
       orderedElements.map((articlePart, idx) => (
-        <Fragment key={`${post.slug}-part-${idx}`}>{returnArticlePartComponent(articlePart)}</Fragment>
+        <Fragment key={`${post.slug}-part-${idx}`}>
+          {returnArticlePartComponent(articlePart)}
+        </Fragment>
       )),
     [orderedElements]
   );
@@ -59,7 +64,7 @@ function Post({ post }: { post: FullPost }) {
     console.log("orderedElements, post", orderedElements, post);
   }, []);
   if (!post) {
-    return <main>Post no encontrado...</main>;
+    return <main>Post no encontrado.</main>;
   }
   const { coverImage, title } = post;
   return (

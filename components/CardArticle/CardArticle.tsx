@@ -45,14 +45,14 @@ const CardArticleFooter = ({ postSummary }: PostSummaryProps) => {
 
 const CardArticle = ({ postSummary }: PostSummaryProps) => {
   const {
-    id,
+    slug,
     coverImage: { url: articleCover },
     title,
     excerpt,
   } = postSummary;
   const header = <Image src={articleCover} alt={`cover image of article: ${title}`} layout="fill" aria-hidden />;
   const linkToPostTitle = (
-    <Link href={`/posts/${id}`} className={s.cardTitle}>
+    <Link href={`/posts/${slug}`} className={s.cardTitle}>
       {title}
     </Link>
   );

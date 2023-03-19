@@ -52,11 +52,11 @@ export const postsSummary = gql`
 export const authorsQuery = gql`
   {
     authors {
-      name,
+      name
       picture {
         url
-      },
-      email,
+      }
+      email
     }
   }
 `;
@@ -72,9 +72,9 @@ export const pageInfo = (title: string) => gql`
   }
 `;
 
-export const fullSinglePost = (idPost: string) => gql`
+export const fullSinglePost = (postSlug: string) => gql`
   query {
-    post(where: { id: \"${idPost}\" }) {
+    post(where: { slug: \"${postSlug}\" }) {
       title
       tags
       updatedAt
